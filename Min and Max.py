@@ -1,7 +1,10 @@
 def max(*args, **kwargs):
-    key = kwargs.get('key',)
-    if key == None:
+    key = kwargs.get('key', lambda x: x)
+    # print("length of args:", len(args))
+    if len(args) == 1:
+        args = args[0]
         for i in args:
+            # print(i)
             n = 0
             if type(i) == int or type(i) == float:
                 for i in args:
@@ -14,14 +17,16 @@ def max(*args, **kwargs):
                         n = m
                 return m
     else:
-        for k, v in kwargs.items():
-            for i in args:
-                n = 0
-                if type(i) == int or type(i) == float:
-                    for i in args:
-                        if key(i) > n:
-                            n = i
-                    return n
+        for i in args:
+            # print(i)
+            n = None
+            # print(key(i))
+            if n == None or i > n:
+                # i = key(i)
+                # i = n
+                n = key(i)
+                # n = (key(n))
+        return n, i
 
 def min(*args, **kwargs):
     key = kwargs.get("key", lambda x: x)
@@ -31,10 +36,8 @@ def min(*args, **kwargs):
         # print(args)
         low = None
         for d in args:
-            # print(key(d))
             if low == None or key(d) < key(low):
                 low = d
-                # print(low, key(d) < key(low))
         return low
     else:
         for i in args:
@@ -51,10 +54,9 @@ def min(*args, **kwargs):
                         low = ord(m)
                 return chr(low)
 
-print(max(3, 2,6, 646))
-print(min(3, 2))
-print(max([1, 2, 0, 3, 4]))
-print(min("hello"))
+print(max(range(22)))
+# print(min(3, 2))
+# print(max([1, 2, 222, 3, 4]))
+# print(min("hello"))
 print(max(2.2, 5.6, 5.9, key=int))
-print(min([[1, 1], [3, 12], [9, 0]], key=lambda x: x[1]))
-# print(2 < None)
+# print(min([[1, 1], [3, 12], [9, 0]], key=lambda x: x[1]))
