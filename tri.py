@@ -7,3 +7,4 @@ def tri(z):
     return z
 
 print(tri(sq(12, 2)))
+print(tri(12))
