@@ -8,3 +8,4 @@ def tri(z):
 
 print(tri(sq(12, 2)))
 print(tri(12))
+print(tri(24))
