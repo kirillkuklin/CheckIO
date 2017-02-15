@@ -17,3 +17,4 @@ def min(*args, **kwargs):
         if low == None or key(d) < key(low):
             low = d
     return low
+
